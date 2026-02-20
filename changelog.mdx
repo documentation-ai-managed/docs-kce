@@ -1,0 +1,97 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to KCE.
+---
+
+## Recent Releases
+
+Stay informed about the latest enhancements to KCE's documentation platform. Review changes below, organized by release version.
+
+<Update label="2024-11-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added support for department-specific documentation portals, enabling Civil Engineering, ECE, and CSE teams to manage project docs independently.
+- Introduced real-time collaboration for shared documents, allowing multiple users to edit simultaneously.
+- Enhanced search with filters for academics, projects, and research outputs.
+
+## Improvements
+
+- Optimized page load times by `>30%` through improved asset caching.
+- Updated UI components to better align with KCE branding using `#8C1515` accents.
+
+## Bug Fixes
+
+- Fixed rendering issues with embedded images from `kce.ac.in` domains.
+- Resolved authentication errors during session timeouts.
+
+</Update>
+
+<Update label="2024-10-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Integrated Mermaid diagram support for engineering flowcharts and process diagrams.
+- Added export options to PDF and Markdown for easy sharing of project reports.
+
+## Bug Fixes
+
+- Corrected table alignment problems in mobile views.
+- Patched cross-site scripting vulnerabilities in user-uploaded content.
+
+</Update>
+
+<Update label="2024-09-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## Initial Release
+
+- Launched core documentation management system with version control and markdown editor.
+- Supported initial departments: Civil Engineering, Mechanical Engineering, and Computer Science.
+- Implemented basic authentication via `https://auth.example.com`.
+
+## Breaking Changes
+
+- Migrated from legacy v0.x config format to new YAML frontmatter structure.
+
+</Update>
+
+<Callout kind="info">
+All updates are deployed automatically. Check your dashboard at `https://dashboard.example.com` for deployment status.
+</Callout>
+
+## Upcoming Changes
+
+Preview what's coming next to KCE documentation.
+
+<Expandable title="v1.3.0 Preview (Expected Q1 2025)" default-open="true">
+
+- AI-powered content suggestions for academic papers and lab reports.
+- Native integration with GitHub for project repositories.
+- Advanced analytics dashboard for document usage across departments.
+
+</Expandable>
+
+<Expandable title="Planned Integrations">
+
+- LaTeX equation rendering for ECE and VLSI Design departments.
+- Webhook support at `https://your-webhook-url.com/webhook` for custom notifications.
+
+</Expandable>
+
+## Get Involved
+
+<Columns cols={2}>
+  <Card title="Report Issues" icon="bug" href="https://github.com/kce-docs/issues" target="_blank">
+    Found a bug? Submit it on GitHub with reproduction steps.
+  </Card>
+  <Card title="Request Features" icon="sparkles" href="https://kce.ac.in/#feedback" target="_blank">
+    Suggest improvements for your department's docs.
+  </Card>
+  <Card title="Contribute" icon="github" href="https://github.com/kce-docs" target="_blank">
+    Fork the repo and submit pull requests.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+Subscribe to updates via email at `info@kce.ac.in` or follow the [KCE website](https://kce.ac.in/) for announcements.
+</Callout>

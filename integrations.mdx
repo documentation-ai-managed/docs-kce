@@ -1,0 +1,166 @@
+---
+title: Integrations and Extensions
+description: Connect KCE with third-party tools to enhance your documentation workflow.
+---
+
+## Overview
+
+Extend your KCE documentation with seamless integrations. Connect to GitHub for version control, use the API for custom tools, set up webhooks for real-time automation, and embed external content effortlessly. These features help you build a dynamic documentation ecosystem tailored to your projects.
+
+<Callout kind="info">
+Review your KCE plan to ensure integrations are enabled. Contact support if you encounter rate limits.
+</Callout>
+
+## GitHub Integration
+
+Sync your documentation repository directly with KCE. Push changes to GitHub, and KCE automatically builds and deploys updated pages.
+
+<Steps>
+  <Step title="Connect Repository" icon="github">
+    Navigate to your KCE dashboard. Select **Integrations > GitHub** and authorize the app.
+  </Step>
+  <Step title="Configure Sync" icon="settings">
+    Enter your repository URL, such as `https://github.com/your-org/your-docs`. Choose the branch (default: `main`).
+  </Step>
+  <Step title="Enable Auto-Deploy" icon="rocket">
+    Toggle auto-deploy on pushes. Test by committing a change to trigger a build.
+  </Step>
+</Steps>
+
+## API Access
+
+Build custom extensions using KCE's REST API. Access documentation content, manage pages, and automate workflows.
+
+<ParamField path="projectId" param-type="string" required="true">
+  Your KCE project identifier.
+</ParamField>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer token: `Bearer YOUR_API_TOKEN`.
+</ParamField>
+
+<Request tabs="JavaScript,cURL">
+  ````javascript
+  const response = await fetch('https://api.example.com/v1/docs/projects/{projectId}', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer YOUR_API_TOKEN'
+    }
+  });
+  ````
+  ````bash
+  curl -X GET 'https://api.example.com/v1/docs/projects/{projectId}' \
+    -H 'Authorization: Bearer YOUR_API_TOKEN'
+  ````
+</Request>
+
+<Response>
+  ````json
+  {
+    "projectId": "proj_123abc",
+    "pages": [
+      {
+        "id": "page_456def",
+        "title": "Introduction",
+        "slug": "introduction"
+      }
+    ]
+  }
+  ````
+
+  ````json
+  {
+    "error": "Invalid token",
+    "code": 401
+  }
+  ````
+</Response>
+
+## Webhook Setup
+
+Automate notifications and actions with webhooks. Trigger events like page updates or new deployments.
+
+<Columns cols={2}>
+  <Card title="Supported Events" icon="zap">
+    - `page.updated`
+    - `build.completed`
+    - `project.published`
+  </Card>
+  <Card title="Payload Example" icon="code">
+    JSON payload includes event type, project details, and metadata.
+  </Card>
+</Columns>
+
+<Tabs>
+  <Tab title="cURL Setup" icon="terminal">
+    ````bash
+    curl -X POST 'https://api.example.com/v1/webhooks' \
+      -H 'Authorization: Bearer YOUR_API_TOKEN' \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "url": "https://your-webhook-url.com/kce",
+        "events": ["page.updated", "build.completed"]
+      }'
+    ````
+  </Tab>
+  <Tab title="JavaScript" icon="code">
+    ````javascript
+    await fetch('https://api.example.com/v1/webhooks', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_API_TOKEN',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        url: 'https://your-webhook-url.com/kce',
+        events: ['page.updated', 'build.completed']
+      })
+    });
+    ````
+  </Tab>
+</Tabs>
+
+## Embedding External Content
+
+Embed iframes, videos, or dynamic widgets from third-party services directly into your KCE pages.
+
+```jsx
+<Iframe
+  src="https://example.com/widget"
+  title="External Widget"
+  width="100%"
+  height="400"
+/>
+```
+
+<CodeGroup tabs="YouTube,Custom">
+  ````mdx
+  <Video
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    title="Demo Video"
+    width="560"
+    height="315"
+  />
+  ````
+  ````html
+  <iframe src="https://your-tool.com/embed/123" width="100%" height="500" frameborder="0"></iframe>
+  ````
+</CodeGroup>
+
+<Expandable title="Advanced Embedding Tips" default-open="false">
+Use responsive sizing and test cross-origin policies. Avoid clickable overlays on interactive embeds.
+</Expandable>
+
+## Next Steps
+
+<Card title="API Reference" icon="book-open" href="/api-reference">
+Dive deeper into all endpoints and schemas.
+</Card>
+
+<Card title="Custom Scripts" icon="code" href="/custom-scripts">
+Build advanced automations with webhooks and API.
+</Card>
+
+<Callout kind="tip">
+Start with GitHub integration for quick wins, then explore APIs for custom needs.
+</Callout>

@@ -1,0 +1,148 @@
+---
+title: Quickstart Guide
+description: Set up your KCE account and create your first documentation space in minutes.
+---
+
+## Prerequisites
+
+<Callout kind="info" title="Before You Begin">
+
+To get started with KCE documentation, ensure you have:
+- A modern web browser (Chrome, Firefox, or Safari)
+- An email address for account verification
+- Optional: Google account for quick sign-up
+
+No software installation required - everything runs in your browser.
+
+</Callout>
+
+## Create Your Account
+
+Sign up for a free KCE account to access the documentation platform.
+
+<Tabs>
+  <Tab title="Email Signup" icon="mail">
+    <Steps>
+      <Step title="Visit Signup Page" icon="globe">
+        Navigate to `https://kce.ac.in/signup` in your browser.
+      </Step>
+      <Step title="Enter Details" icon="user-plus">
+        Provide your email, create a strong password, and complete the CAPTCHA.
+      </Step>
+      <Step title="Verify Email" icon="check-circle">
+        Check your inbox for a verification link from `no-reply@kce.ac.in` and click it.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Google Signup" icon="apple">
+    <Steps>
+      <Step title="Access Dashboard" icon="globe">
+        Go to `https://kce.ac.in/dashboard`.
+      </Step>
+      <Step title="Select Google" icon="log-in">
+        Click `Sign up with Google` and authorize the KCE app.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Log In to KCE
+
+<Steps>
+  <Step title="Go to Login" icon="log-in">
+    Open `https://kce.ac.in/login`.
+  </Step>
+  <Step title="Enter Credentials">
+    Use your email and password, or select Google login.
+  </Step>
+  <Step title="Access Dashboard">
+    You land on the main dashboard at `https://kce.ac.in/dashboard`.
+  </Step>
+</Steps>
+
+## Create Your First Documentation Project
+
+Follow these steps to set up a new documentation space.
+
+<Steps>
+  <Step title="New Project" icon="plus">
+    Click the `New Documentation Space` button on the dashboard.
+  </Step>
+  <Step title="Configure Space">
+    Enter a name like `My Project Docs`, select a template (e.g., Starter Kit), and choose visibility (public/private).
+  </Step>
+  <Step title="Generate Pages">
+    Click `Create`. KCE auto-generates pages like `/introduction` and `/quickstart`.
+  </Step>
+</Steps>
+
+## Basic Interface Tour
+
+<Columns cols={3}>
+  <Card title="Editor Panel" icon="edit-3" href="#editor">
+    Write MDX content with live preview. Supports components like `<Callout>` and `<Steps>`.
+  </Card>
+  <Card title="File Tree" icon="file-tree">
+    Navigate pages, folders, and assets. Drag-and-drop to reorganize.
+  </Card>
+  <Card title="Preview Pane" icon="eye">
+    Real-time rendering of your docs. Toggle between desktop and mobile views.
+  </Card>
+</Columns>
+
+## Import Initial Content
+
+Populate your space with starter content using these methods.
+
+<CodeGroup tabs="Markdown Upload,API Import">
+  ````markdown
+  # Welcome to My Docs
+
+  ## Overview
+
+  This is your first page.
+
+  <Callout kind="success">
+    Successfully imported!
+  </Callout>
+  ````
+
+  ````javascript
+  const formData = new FormData();
+  formData.append('file', markdownFile);
+  formData.append('spaceId', 'your-space-id');
+
+  await fetch('https://api.kce.ac.in/v1/spaces/{spaceId}/import', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    body: formData
+  });
+  ````
+</CodeGroup>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer token: `Bearer YOUR_API_KEY`
+</ParamField>
+
+<ParamField path="spaceId" param-type="string" required="true">
+  Unique ID of your documentation space.
+</ParamField>
+
+## Next Steps
+
+<Callout kind="tip" title="What's Next?">
+
+Explore your new space and customize the generated pages. Check the navigation sidebar for all sections.
+
+</Callout>
+
+<Columns cols={2}>
+  <Card title="Full Introduction" icon="book-open" href="/introduction">
+    Learn core concepts and features.
+  </Card>
+  <Card title="Authentication Guide" icon="shield" href="/authentication">
+    Secure your docs with advanced auth.
+  </Card>
+</Columns>
